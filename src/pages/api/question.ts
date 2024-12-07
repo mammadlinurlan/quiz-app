@@ -1,6 +1,170 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { ITopicQuestions } from '../../../models/interface';
+import { ITopicQuestions, ICorrectAnswers } from '../../../models/interface';
+
+const correctAnswers: ICorrectAnswers = {
+  html: [
+    {
+      questionId: 1,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 2,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 3,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 4,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 5,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 6,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 7,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 8,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 9,
+      correctAnswer: 1, // A
+    },
+  ],
+  javascript: [
+    {
+      questionId: 1,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 2,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 3,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 4,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 5,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 6,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 7,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 8,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 9,
+      correctAnswer: 4, // D
+    },
+  ],
+  accessibility: [
+    {
+      questionId: 1,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 2,
+      correctAnswer: 3, // C
+    },
+    {
+      questionId: 3,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 4,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 5,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 6,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 7,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 8,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 9,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 10,
+      correctAnswer: 2, // B
+    },
+  ],
+
+  css: [
+    {
+      questionId: 1,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 2,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 3,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 4,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 5,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 6,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 7,
+      correctAnswer: 1, // A
+    },
+    {
+      questionId: 8,
+      correctAnswer: 2, // B
+    },
+    {
+      questionId: 9,
+      correctAnswer: 3, // C
+    },
+    {
+      questionId: 10,
+      correctAnswer: 1, // A
+    },
+  ],
+};
 
 const questionsData: ITopicQuestions = {
   html: [
@@ -25,7 +189,6 @@ const questionsData: ITopicQuestions = {
         },
         { id: 4, value: 'To include external JavaScript files', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 2,
@@ -36,7 +199,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '<div>', variant: 'C' },
         { id: 4, value: '<button>', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 3,
@@ -47,7 +209,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'It creates a clickable button', variant: 'C' },
         { id: 4, value: 'It displays a header', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 4,
@@ -63,7 +224,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '<link src="script.js"></link>', variant: 'C' },
         { id: 4, value: '<script href="script.js"></script>', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 5,
@@ -78,7 +238,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'A container for JavaScript functions', variant: 'C' },
         { id: 4, value: 'A container for multimedia content', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 6,
@@ -90,7 +249,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'title', variant: 'C' },
         { id: 4, value: 'description', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 7,
@@ -101,7 +259,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '<!DOCTYPE HTML5>', variant: 'C' },
         { id: 4, value: '<!DOCTYPE HTML5 PUBLIC>', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 8,
@@ -112,7 +269,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '<td>', variant: 'C' },
         { id: 4, value: '<th>', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 9,
@@ -123,7 +279,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'checkbox', variant: 'C' },
         { id: 4, value: 'radio', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
   ],
   javascript: [
@@ -136,7 +291,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '5', variant: 'C' },
         { id: 4, value: '6', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 2,
@@ -147,7 +301,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'const', variant: 'C' },
         { id: 4, value: 'define', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 3,
@@ -158,7 +311,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'boolean', variant: 'C' },
         { id: 4, value: 'undefined', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 4,
@@ -170,7 +322,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'pop()', variant: 'C' },
         { id: 4, value: 'splice()', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 5,
@@ -181,7 +332,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'func myFunc() {}', variant: 'C' },
         { id: 4, value: 'function: myFunc() {}', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 6,
@@ -193,7 +343,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'myFunction[]', variant: 'C' },
         { id: 4, value: 'execute myFunction', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 7,
@@ -205,7 +354,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '===', variant: 'C' },
         { id: 4, value: '&&', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 8,
@@ -217,7 +365,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'shift()', variant: 'C' },
         { id: 4, value: 'unshift()', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 9,
@@ -228,7 +375,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'The global object', variant: 'C' },
         { id: 4, value: 'The object that is calling the method', variant: 'D' },
       ],
-      correctAnswer: 4, // D
     },
   ],
   accessibility: [
@@ -241,7 +387,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'Hyperlink destination', variant: 'C' },
         { id: 4, value: 'CSS styling for the image', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 2,
@@ -256,7 +401,6 @@ const questionsData: ITopicQuestions = {
         },
         { id: 4, value: 'A JavaScript library', variant: 'D' },
       ],
-      correctAnswer: 3, // C
     },
     {
       id: 3,
@@ -267,7 +411,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'keybind', variant: 'C' },
         { id: 4, value: 'keypress', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 4,
@@ -282,7 +425,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'To create interactive content', variant: 'C' },
         { id: 4, value: 'To enable animations', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 5,
@@ -301,7 +443,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'An element used only for images', variant: 'C' },
         { id: 4, value: 'An element that requires JavaScript', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 6,
@@ -313,7 +454,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: '<aside>', variant: 'C' },
         { id: 4, value: '<section>', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 7,
@@ -333,7 +473,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'A device to track user input', variant: 'C' },
         { id: 4, value: 'A plugin for optimizing images', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 8,
@@ -345,7 +484,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'alt', variant: 'C' },
         { id: 4, value: 'meta', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 9,
@@ -360,7 +498,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'To navigate to the footer', variant: 'C' },
         { id: 4, value: 'To zoom into the page content', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 10,
@@ -376,10 +513,8 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'Adding animations to links', variant: 'C' },
         { id: 4, value: 'Using inline styles', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
   ],
-
   css: [
     {
       id: 1,
@@ -402,7 +537,6 @@ const questionsData: ITopicQuestions = {
           variant: 'D',
         },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 2,
@@ -413,7 +547,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'font-color', variant: 'C' },
         { id: 4, value: 'background-color', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 3,
@@ -425,7 +558,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'box', variant: 'C' },
         { id: 4, value: '[box]', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 4,
@@ -436,7 +568,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'font-weight', variant: 'C' },
         { id: 4, value: 'text-size', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 5,
@@ -463,7 +594,6 @@ const questionsData: ITopicQuestions = {
           variant: 'D',
         },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 6,
@@ -475,7 +605,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'border-spacing', variant: 'C' },
         { id: 4, value: 'spacing', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 7,
@@ -486,7 +615,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'The background color of the element', variant: 'C' },
         { id: 4, value: 'The opacity of the element', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
     {
       id: 8,
@@ -498,7 +626,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'bg-color', variant: 'C' },
         { id: 4, value: 'background', variant: 'D' },
       ],
-      correctAnswer: 2, // B
     },
     {
       id: 9,
@@ -522,7 +649,6 @@ const questionsData: ITopicQuestions = {
         },
         { id: 4, value: 'It creates space between elements', variant: 'D' },
       ],
-      correctAnswer: 3, // C
     },
     {
       id: 10,
@@ -534,7 +660,6 @@ const questionsData: ITopicQuestions = {
         { id: 3, value: 'text-spacing', variant: 'C' },
         { id: 4, value: 'line-spacing', variant: 'D' },
       ],
-      correctAnswer: 1, // A
     },
   ],
 };
@@ -555,17 +680,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { topic, questionId, answer } = req.body;
 
-    const question = questionsData[(topic as string).toLowerCase()].find(
-      (q) => q.id === questionId,
-    );
-    if (!question) {
+    const correctAnswer = correctAnswers[(topic as string).toLowerCase()].find(
+      (answer) => answer.questionId === questionId,
+    )?.correctAnswer;
+
+    if (!correctAnswer) {
       return res.status(400).json({ message: 'Not found' });
     }
 
-    const isCorrect = answer === question.correctAnswer;
+    const isCorrect = answer === correctAnswer;
 
-    return res
-      .status(200)
-      .json({ isCorrect, correctAnswer: question.correctAnswer });
+    return res.status(200).json({ isCorrect, correctAnswer: correctAnswer });
   }
 }

@@ -16,7 +16,15 @@ export interface IQuestion {
   id: number;
   question: string;
   options: IAnswer[];
+}
+
+export interface ICorrectAnswer {
+  questionId: number;
   correctAnswer: number;
+}
+
+export interface ICorrectAnswers {
+  [topic: string]: ICorrectAnswer[];
 }
 
 export interface ITopicQuestions {

@@ -1,5 +1,8 @@
+import Head from 'next/head';
+
 import { Container } from '@chakra-ui/react';
 import { Header } from '@/components/Header/Header';
+
 import { ProviderWrapper } from '../ProviderWrapper/ProviderWrapper';
 
 export default function Layout({
@@ -9,6 +12,9 @@ export default function Layout({
 }>) {
   return (
     <ProviderWrapper>
+      <Head>
+        <title>Quiz app</title>
+      </Head>
       <Container
         maxW={{
           base: '100%',
